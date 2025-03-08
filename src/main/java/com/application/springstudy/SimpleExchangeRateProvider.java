@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 
 /**
  * packageName    : com.application.springstudy
- * fileName       : SimplePaymentService
+ * fileName       : SimpleExchangeRateProvider
  * author         : NAHAEJUN
  * date           : 2025-03-08
  * description    :
@@ -15,10 +15,9 @@ import java.net.URISyntaxException;
  * -----------------------------------------------------------
  * 2025-03-08        NAHAEJUN              최초생성
  */
-public class SimplePaymentService extends PaymentService{
+public class SimpleExchangeRateProvider {
 
-    @Override
-    protected BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
+    public BigDecimal getSimpleExchangeRate(String currency) throws URISyntaxException, IOException {
         return BigDecimal.valueOf(1000);
     }
 }

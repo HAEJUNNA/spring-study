@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * packageName    : com.application.springstudy
- * fileName       : HttpApiPaymentService
+ * fileName       : HttpApiExchangeRateProvider
  * author         : NAHAEJUN
  * date           : 2025-03-08
  * description    :
@@ -22,12 +22,11 @@ import java.util.stream.Collectors;
  * -----------------------------------------------------------
  * 2025-03-08        NAHAEJUN              최초생성
  */
-public class HttpApiPaymentService extends PaymentService{
+public class HttpApiExchangeRateProvider{
 
     // 메서드 추출
     // 관심사 분리 -> 가장 좋은 방법은 메서드 추출
-    @Override
-    protected BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
+    public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
         //환율 조회
         URI uri = new URI("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
