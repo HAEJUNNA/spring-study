@@ -1,0 +1,20 @@
+classDiagram
+    direction LR
+    class PaymentService {
+        + prepare()
+    }
+    class ExchangeRateProvider {
+        <<interface>>
+        + getExchangeRate()
+    }
+    class HttpApiExchangeRateProvider {
+        + getExchangeRate()
+    }
+
+    class SimpleExchangeRateProvider {
+        + getExchangeRate()
+    }
+
+    PaymentService ..> ExchangeRateProvider
+    ExchangeRateProvider <|.. HttpApiExchangeRateProvider
+    ExchangeRateProvider <|.. SimpleExchangeRateProvider

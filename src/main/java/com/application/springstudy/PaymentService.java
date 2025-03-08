@@ -20,10 +20,10 @@ import java.time.LocalDateTime;
  */
 public class PaymentService {
 
-    private final HttpApiExchangeRateProvider exchangeRateProvider;
+    private final ExchangeRateProvider exchangeRateProvider;
 
-    public PaymentService(HttpApiExchangeRateProvider exchangeRateProvider) {
-        this.exchangeRateProvider = exchangeRateProvider;
+    public PaymentService(ExchangeRateProvider provider) {
+        this.exchangeRateProvider = provider;
     }
 
     public Payment prepare(Long orderId, String currency, BigDecimal amount) throws URISyntaxException, IOException {
@@ -43,8 +43,8 @@ public class PaymentService {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
         //테스트 코드
-        HttpApiExchangeRateProvider httpProvider = new HttpApiExchangeRateProvider();
-        PaymentService paymentService = new PaymentService(httpProvider);
+        ExchangeRateProvider provider = new HttpApiExchangeRateProvider();
+        PaymentService paymentService = new PaymentService(provider);
         Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
         System.out.println(">>> payment=" + payment);
     }

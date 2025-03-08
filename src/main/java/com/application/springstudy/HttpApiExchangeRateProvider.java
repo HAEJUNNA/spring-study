@@ -22,10 +22,11 @@ import java.util.stream.Collectors;
  * -----------------------------------------------------------
  * 2025-03-08        NAHAEJUN              최초생성
  */
-public class HttpApiExchangeRateProvider{
+public class HttpApiExchangeRateProvider implements ExchangeRateProvider {
 
     // 메서드 추출
     // 관심사 분리 -> 가장 좋은 방법은 메서드 추출
+    @Override
     public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
         //환율 조회
         URI uri = new URI("https://open.er-api.com/v6/latest/" + currency);
