@@ -25,6 +25,20 @@ import java.util.stream.Collectors;
  */
 public class PaymentService {
     public Payment prepare(Long orderId, String currency, BigDecimal amount) throws URISyntaxException, IOException {
+
+        BigDecimal exchangeRate = getExchangeRate(currency);
+
+        //금액 계산
+        BigDecimal convertedAmount = exchangeRate.multiply(amount);
+
+        //유효시간 계산
+        LocalDateTime validUntil = LocalDateTime.now().plusMinutes(30);
+
+        return new Payment(orderId, currency, amount,
+                exchangeRate, convertedAmount, validUntil);
+    }
+    // 메서드 추출
+    private static BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
         //환율 조회
         URI uri = new URI("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
@@ -39,15 +53,7 @@ public class PaymentService {
         //System.out.println(">>> data=" + data);
         BigDecimal exchangeRate = data.rates().get("KRW");
         //System.out.println(">>> exchangeRate=" + exchangeRate);
-
-        //금액 계산
-        BigDecimal convertedAmount = exchangeRate.multiply(amount);
-
-        //유효시간 계산
-        LocalDateTime validUntil = LocalDateTime.now().plusMinutes(30);
-
-        return new Payment(orderId, currency, amount,
-                exchangeRate, convertedAmount, validUntil);
+        return exchangeRate;
     }
 
     public static void main(String[] args) throws URISyntaxException, IOException {
