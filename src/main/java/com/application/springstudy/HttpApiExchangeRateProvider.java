@@ -29,6 +29,8 @@ public class HttpApiExchangeRateProvider implements ExchangeRateProvider {
     @Override
     public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
         //환율 조회
+
+
         URI uri = new URI("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

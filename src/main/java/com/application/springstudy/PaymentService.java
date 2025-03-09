@@ -32,7 +32,7 @@ public class PaymentService {
 
         BigDecimal exchangeRate = exchangeRateProvider.getExchangeRate(currency);
 
-        //금액 계산
+        //금액 계산 기능
         BigDecimal convertedAmount = exchangeRate.multiply(amount);
 
         //유효시간 계산
