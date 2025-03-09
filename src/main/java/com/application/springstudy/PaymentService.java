@@ -28,6 +28,8 @@ public class PaymentService {
 
     public Payment prepare(Long orderId, String currency, BigDecimal amount) throws URISyntaxException, IOException {
 
+
+
         BigDecimal exchangeRate = exchangeRateProvider.getExchangeRate(currency);
 
         //금액 계산
