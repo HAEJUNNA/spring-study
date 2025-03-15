@@ -27,9 +27,7 @@ public class PaymentService {
     }
 
     public Payment prepare(Long orderId, String currency, BigDecimal amount) throws URISyntaxException, IOException {
-
-
-
+        // 관심사 분리
         BigDecimal exchangeRate = exchangeRateProvider.getExchangeRate(currency);
 
         //금액 계산 기능
@@ -42,12 +40,12 @@ public class PaymentService {
                 exchangeRate, convertedAmount, validUntil);
     }
 
-
-    public static void main(String[] args) throws URISyntaxException, IOException {
-        //테스트 코드
-        ExchangeRateProvider provider = new HttpApiExchangeRateProvider();
-        PaymentService paymentService = new PaymentService(provider);
-        Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
-        System.out.println(">>> payment=" + payment);
-    }
+//    public static void main(String[] args) throws URISyntaxException, IOException {
+//        //테스트 코드
+//        // HttpApiExchangeRateProvider 관계를 설정해주는게 지금 main메서드가 책임을 가지고있다.
+//        // 관계 설정의 책임을 내가 갖는게 아닌 분리 한다.(관계설정책임분리) --> Client 클래스
+//        PaymentService paymentService = new PaymentService(new HttpApiExchangeRateProvider());
+//        Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
+//        System.out.println(">>> payment=" + payment);
+//    }
 }

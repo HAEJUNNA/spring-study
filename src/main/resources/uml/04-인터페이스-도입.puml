@@ -9,6 +9,7 @@ interface ExchangeRateProvider #pink {
 class HttpApiExchangeRateProvider {
     + <color:red>getExchangeRate()</color>
 }
+
 class SimpleExchangeRateProvider {
     + <color:red>getExchangeRate()</color>
 }

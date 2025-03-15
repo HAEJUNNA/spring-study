@@ -1,0 +1,26 @@
+@startuml
+class Client #pink {
+    + main()
+}
+
+class PaymentService {
+    + prepare()
+}
+
+interface ExchangeRateProvider {
+    + getExchangeRate()
+}
+class HttpApiExchangeRateProvider {
+    + getExchangeRate()
+}
+class SimpleExchangeRateProvider {
+    + getExchangeRate()
+}
+
+Client .> HttpApiExchangeRateProvider : 1.생성
+Client .> PaymentService : 2.생성,전달,사용
+PaymentService .> ExchangeRateProvider : 3.사용
+
+ExchangeRateProvider <|.. HttpApiExchangeRateProvider
+ExchangeRateProvider <|.. SimpleExchangeRateProvider
+@enduml
