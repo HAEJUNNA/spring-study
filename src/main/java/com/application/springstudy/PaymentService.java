@@ -22,8 +22,8 @@ public class PaymentService {
 
     private final ExchangeRateProvider exchangeRateProvider;
 
-    public PaymentService(ExchangeRateProvider provider) {
-        this.exchangeRateProvider = provider;
+    public PaymentService(ExchangeRateProvider exchangeRateProvider) {
+        this.exchangeRateProvider = exchangeRateProvider;
     }
 
     public Payment prepare(Long orderId, String currency, BigDecimal amount) throws URISyntaxException, IOException {

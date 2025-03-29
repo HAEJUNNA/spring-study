@@ -17,14 +17,22 @@ public class PaymentConfig {
     // 객체를 넣어주는 메서드명은 그냥 get이아닌 소문자로 그대로 넣어주는게 관례
     @Bean
     public PaymentService paymentService(){
-       return new PaymentService(getExchangeRateProvider());
+       return new PaymentService(cachedExchangeRateProvider());
     };
-    
-    public ExchangeRateProvider getExchangeRateProvider(){
-        return new HttpApiExchangeRateProvider();
+
+    @Bean
+    public ExchangeRateProvider cachedExchangeRateProvider() {
+        return new CachedExchangeRateProvider(exchangeRateProvider(), exchangeRateCacheProvider());
     }
 
-    public ExchangeRateProvider exchangeRateProvider(){
+    @Bean
+    public ExchangeRateCacheProvider exchangeRateCacheProvider() {
+        return new InMemoryExchangeRateCacheProvider();
+    }
+
+    @Bean
+    public ExchangeRateProvider exchangeRateProvider() {
         return new HttpApiExchangeRateProvider();
+        //return new SimpleExchangeRateProvider();
     }
 }
