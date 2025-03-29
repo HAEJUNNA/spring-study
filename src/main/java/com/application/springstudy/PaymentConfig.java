@@ -23,4 +23,8 @@ public class PaymentConfig {
     public ExchangeRateProvider getExchangeRateProvider(){
         return new HttpApiExchangeRateProvider();
     }
+
+    public ExchangeRateProvider exchangeRateProvider(){
+        return new HttpApiExchangeRateProvider();
+    }
 }
