@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.study;
 
 import java.util.Arrays;
 import java.util.Collections;

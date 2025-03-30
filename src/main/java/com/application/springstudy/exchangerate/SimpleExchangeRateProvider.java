@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.exchangerate;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 
 /**
  * packageName    : com.application.springstudy
- * fileName       : ExchangeRateProvider
+ * fileName       : SimpleExchangeRateProvider
  * author         : NAHAEJUN
  * date           : 2025-03-08
  * description    :
@@ -15,6 +15,10 @@ import java.net.URISyntaxException;
  * -----------------------------------------------------------
  * 2025-03-08        NAHAEJUN              최초생성
  */
-public interface ExchangeRateProvider {
-    public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException;
+public class SimpleExchangeRateProvider implements ExchangeRateProvider {
+
+    @Override
+    public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException {
+        return BigDecimal.valueOf(1000);
+    }
 }

@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.exchangerate.cache;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,7 +19,7 @@ import java.util.Map;
  * -----------------------------------------------------------
  * 2025-03-29        NAHAEJUN              최초생성
  */
-public class InMemoryExchangeRateCacheProvider implements ExchangeRateCacheProvider{
+public class InMemoryExchangeRateCacheProvider implements ExchangeRateCacheProvider {
     private static final Map<String, BigDecimal> CACHED_EXCHANGE_RATES = new HashMap<>();
     private static final Map<String, LocalDateTime> CACHED_EXPIRY_TIMES = new HashMap<>();
 

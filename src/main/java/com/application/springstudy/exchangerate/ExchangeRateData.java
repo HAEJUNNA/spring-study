@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.exchangerate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

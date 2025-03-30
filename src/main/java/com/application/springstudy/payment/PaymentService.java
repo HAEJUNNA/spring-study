@@ -1,4 +1,6 @@
-package com.application.springstudy;
+package com.application.springstudy.payment;
+
+import com.application.springstudy.exchangerate.ExchangeRateProvider;
 
 import java.io.IOException;
 import java.math.BigDecimal;

@@ -1,5 +1,7 @@
 package com.application.springstudy;
 
+import com.application.springstudy.payment.Payment;
+import com.application.springstudy.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.payment;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

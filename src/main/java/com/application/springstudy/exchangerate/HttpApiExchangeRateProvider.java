@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.exchangerate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -39,7 +39,7 @@ public class HttpApiExchangeRateProvider implements ExchangeRateProvider {
         ExchangeRateData data = objectMapper.readValue(body, ExchangeRateData.class);
         //문자열(바이트배열) -> 객체로 변환 --> 디시리얼라이즈 (디시리얼라이저)
         //객체 -> 문자열(바이트배열)로 변환 --> 시리얼라이즈 (시리얼라이저)
-        //System.out.println(">>> data=" + data);
+        //System.out.println(">>> data=" +` data);
         BigDecimal exchangeRate = data.rates().get("KRW");
         //System.out.println(">>> exchangeRate=" + exchangeRate);
         return exchangeRate;

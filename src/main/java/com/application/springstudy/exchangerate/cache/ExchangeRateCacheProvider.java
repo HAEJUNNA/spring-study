@@ -1,4 +1,4 @@
-package com.application.springstudy;
+package com.application.springstudy.exchangerate.cache;
 
 import java.io.IOException;
 import java.math.BigDecimal;
