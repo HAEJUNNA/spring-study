@@ -3,6 +3,7 @@ package com.application.springstudy;
 import com.application.springstudy.exchangerate.*;
 import com.application.springstudy.exchangerate.cache.ExchangeRateCacheProvider;
 import com.application.springstudy.exchangerate.cache.InMemoryExchangeRateCacheProvider;
+import com.application.springstudy.payment.ExchangeRateProvider;
 import com.application.springstudy.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
 

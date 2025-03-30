@@ -1,6 +1,7 @@
 package com.application.springstudy.exchangerate;
 
 import com.application.springstudy.exchangerate.cache.ExchangeRateCacheProvider;
+import com.application.springstudy.payment.ExchangeRateProvider;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ import java.util.Map;
  * 2025-03-23        NAHAEJUN              최초생성
  */
 @RequiredArgsConstructor
-public class CachedExchangeRateProvider implements ExchangeRateProvider{
+public class CachedExchangeRateProvider implements ExchangeRateProvider {
 
     private static final Map<String, BigDecimal> CACHE_EXCHANGE_RATES = new HashMap<>(); //ConcurrentHashMap<>() 사용가능
 

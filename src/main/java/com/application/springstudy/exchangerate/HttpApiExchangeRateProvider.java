@@ -1,5 +1,7 @@
 package com.application.springstudy.exchangerate;
 
+import com.application.springstudy.payment.ExchangeRateData;
+import com.application.springstudy.payment.ExchangeRateProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;

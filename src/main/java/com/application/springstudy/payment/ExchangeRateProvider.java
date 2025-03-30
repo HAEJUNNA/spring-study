@@ -1,13 +1,12 @@
-package com.application.springstudy.exchangerate;
+package com.application.springstudy.payment;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Map;
+import java.net.URISyntaxException;
 
 /**
  * packageName    : com.application.springstudy
- * fileName       : ExchangeRateData
+ * fileName       : ExchangeRateProvider
  * author         : NAHAEJUN
  * date           : 2025-03-08
  * description    :
@@ -16,8 +15,6 @@ import java.util.Map;
  * -----------------------------------------------------------
  * 2025-03-08        NAHAEJUN              최초생성
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-public record ExchangeRateData (
-        String result,
-        Map<String, BigDecimal> rates
-) {}
+public interface ExchangeRateProvider {
+    public BigDecimal getExchangeRate(String currency) throws URISyntaxException, IOException;
+}

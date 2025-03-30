@@ -1,5 +1,7 @@
 package com.application.springstudy.exchangerate;
 
+import com.application.springstudy.payment.ExchangeRateProvider;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URISyntaxException;
