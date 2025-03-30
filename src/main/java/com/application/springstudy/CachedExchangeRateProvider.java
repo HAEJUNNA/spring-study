@@ -47,7 +47,7 @@ public class CachedExchangeRateProvider implements ExchangeRateProvider{
     private BigDecimal getNewExchangeRate(String currency) throws URISyntaxException, IOException {
         BigDecimal exchangeRate = target.getExchangeRate(currency);
 //        cacheProvider.setExchangeRate(currency, exchangeRate, LocalDateTime.now().plusSeconds(3));
-        cacheProvider.setExchangeRate(currency, exchangeRate, Duration.ofSeconds(3));
+        cacheProvider.setExchangeRate(currency, exchangeRate, Duration.ofMinutes(3)); // 레디스 보관 시간 지정
         return exchangeRate;
     }
 }

@@ -1,6 +1,10 @@
 package com.application.springstudy;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * packageName    : com.application.springstudy
@@ -27,12 +31,25 @@ public class PaymentConfig {
 
     @Bean
     public ExchangeRateCacheProvider exchangeRateCacheProvider() {
-        return new InMemoryExchangeRateCacheProvider();
+//        return new InMemoryExchangeRateCacheProvider();
+        return new RedisExchangeRateCacheProvider(redisTemplate()); //레디스 로 교체
     }
 
     @Bean
     public ExchangeRateProvider exchangeRateProvider() {
         return new HttpApiExchangeRateProvider();
-        //return new SimpleExchangeRateProvider();
+    }
+
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate() {
+        LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory();
+        connectionFactory.afterPropertiesSet();
+
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(connectionFactory);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
+        redisTemplate.afterPropertiesSet();
+        return redisTemplate;
     }
 }
