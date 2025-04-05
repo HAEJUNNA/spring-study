@@ -1,0 +1,28 @@
+classDiagram
+    direction TB
+
+    namespace PresentationLayer {
+        class OrderController
+    }
+
+    namespace ApplicationLayer {
+        class OrderService
+    }
+
+    namespace DomainLayer {
+        class Order
+        class OrderRepository
+    }
+
+    namespace InfrastructureLayer {
+        class OrderJpaRepository
+    }
+
+    OrderController ..> OrderService
+    OrderService ..> Order
+    OrderService ..> OrderRepository
+    OrderRepository ..> Order
+    OrderRepository <|.. OrderJpaRepository
+
+%%  OrderController ..> OrderRepository: (선택)
+%%  OrderController ..> Order: (선택)
