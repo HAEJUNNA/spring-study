@@ -17,16 +17,12 @@ import java.util.List;
  * 2025-03-15        NAHAEJUN              최초생성
  */
 public class Sort {
-    public static void main(String[] args) {
-        List<String> list = Arrays.asList("b","dddd","aaaa","cc");
 
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.length() - o2.length();
-            }
-        }); // util클래스에는 명을 s를 붙여서 만든다
 
-        list.forEach(System.out::println);
+    public List<String> sortByLength(List<String> list) {
+        Collections.sort(list, Comparator.comparingInt(String::length));
+        return list;
     }
+
+
 }
