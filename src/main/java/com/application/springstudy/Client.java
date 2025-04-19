@@ -3,6 +3,7 @@ package com.application.springstudy;
 import com.application.springstudy.payment.Payment;
 import com.application.springstudy.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
@@ -23,7 +24,9 @@ import java.net.URISyntaxException;
 public class Client {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
         //객체 생성 및 관계 설정
-        BeanFactory beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
+//        BeanFactory beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
+        ApplicationContext beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
+
         PaymentService paymentService = beanFactory.getBean(PaymentService.class);
 
         //객체 사용
